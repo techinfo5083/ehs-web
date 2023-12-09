@@ -2,8 +2,8 @@
 @section('content')
 
 <div class="row">
-    @livewire('kendaraan.table-kendaraan')
     @livewire('kendaraan.form-kendaraan')
+    @livewire('kendaraan.table-kendaraan')
 </div>
 
 @endSection()

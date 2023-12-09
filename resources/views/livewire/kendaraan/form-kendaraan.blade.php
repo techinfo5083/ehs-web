@@ -1,130 +1,163 @@
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">
-                    Form Tambah Kendaraan
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="nama">Nama</label>
-                        <input type="text" class="form-control" id="nama" />
-                    </div>
-                    <div class="form-group">
-                        <label for="department">Department</label>
-                        <select class="form-control" id="department">
-                            <option>--Pilih--</option>
-                            <option>Stamping</option>
-                            <option>Welding</option>
-                            <option>PE</option>
-                            <option>QA</option>
-                            <option>EHS</option>
-                            <option>PPIC</option>
-                            <option>HR/GA</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="kategori">Kategori</label>
-                        <select class="form-control" id="kategori">
-                            <option>--Pilih--</option>
-                            <option>Motor</option>
-                            <option>Mobil</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="merkKendaraan">Merk Kendaraan</label>
-                        <select class="form-control" id="merkKendaraan">
-                            <option>--Pilih--</option>
-                            <option>Yamaha</option>
-                            <option>Honda</option>
-                            <option>Suzuki</option>
-                            <option>Kawasaki</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="sim">Jenis Motor</label>
-                        <input type="text" class="form-control" id="" />
-                    </div>
-                    <div class="form-group">
-                        <label for="sim">No.Plat</label>
-                        <input type="text" class="form-control" id="" />
-                    </div>
+<div class="container mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h5>Form Tambah Kendaraan</h5>
+        </div>
+        <div class="card body p-2">
+            <form wire:submit.prevent="store">
+                @csrf
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" wire:model="nama" />
+                            @error('nama')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <label for="department">Department</label>
+                                <select class="form-control @error('dept') is-invalid @enderror" id="department" wire:model="dept">
+                                    <option>--Pilih--</option>
+                                    <option value="Stamping">Stamping</option>
+                                    <option value="Welding">Welding</option>
+                                    <option value="PE">PE</option>
+                                    <option value="QA">QA</option>
+                                    <option value="EHS">EHS</option>
+                                    <option value="PPIC">PPIC</option>
+                                    <option value="HR/GA">HR/GA</option>
+                                    <option value="Maintenance">HR/GA</option>
+                                </select>
+                                @error('dept')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-3">
+                                <label for="kategori">Kategori</label>
+                                <select class="form-control @error('kategori') is-invalid @enderror" id="kategori" wire:model="kategori">
+                                    <option>--Pilih--</option>
+                                    <option value="Motor">Motor</option>
+                                    <option value="Mobil">Mobil</option>
+                                </select>
+                                @error('kategori')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="merkKendaraan">Merk Kendaraan</label>
+                                <select class="form-control @error('merk') is-invalid @enderror" id="merkKendaraan" wire:model="merk">
+                                    <option>--Pilih--</option>
+                                    <option value="Yamaha">Yamaha</option>
+                                    <option value="Honda">Honda</option>
+                                    <option value="Suzuki">Suzuki</option>
+                                    <option value="Kawasaki">Kawasaki</option>
+                                </select>
+                                @error('merk')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
 
-                    <label for="">*Kelengkapan</label>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="">
-                                <label class="form-check-label" for="">Helm</label>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label for="sim">Jenis Motor</label>
+                                <input type="text" class="form-control" id="" wire:model="jenis" />
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="">
-                                <label class="form-check-label" for="">Spion</label>
+                            <div class="form-group col-4">
+                                <label for="sim">No.Plat</label>
+                                <input type="text" class="form-control" id="" wire:model="no_plat" />
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="">
-                                <label class="form-check-label" for="">Knalpot</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="">
-                                <label class="form-check-label" for="">Plat No</label>
+                            <div class="form-group col-4">
+                                <label for="sticker">Kondisi Sticker</label>
+                                <select class="form-control" id="sticker" wire:model="sticker">
+                                    <option>--Pilih--</option>
+                                    <option value="OK">OK</option>
+                                    <option value="NG">NG</option>
+                                    <option value="Belum">Belum Terpasang</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <label for="" class="text-center">*Kelengkapan Surat</label>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="">
-                                <label class="form-check-label" for="">SIM</label>
+                    <div class="col-lg-6">
+                        <label for="">*Kelengkapan</label>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" value="ok" id="" wire:model="helm">
+                                    <label class="form-check-label" for="">Helm</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="" value="ok" wire:model="spion">
+                                    <label class="form-check-label" for="">Spion</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="sim">Tgl Expired</label>
-                                <input type="date" class="form-control" id="sim" />
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="" value="ok" wire:model="knalpot">
+                                    <label class="form-check-label" for="">Knalpot</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="" value="ok" wire:model="plat">
+                                    <label class="form-check-label" for="">Plat No</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="">
-                                <label class="form-check-label" for="">STNK</label>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="sim">Tgl Expired</label>
-                                <input type="date" class="form-control" id="" />
-                            </div>
-                        </div>
-                    </div>
 
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="reset" class="btn btn-danger">
-                    Reset
-                </button>
-                <button type="button" class="btn btn-primary">
-                    Tambah
-                </button>
-            </div>
+                        <label for="" class="text-center">*Kelengkapan Surat</label>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="" value="ok" wire:model="sim">
+                                    <label class="form-check-label" for="">SIM</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="" value="ok" wire:model="stnk">
+                                    <label class="form-check-label" for="">STNK</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="sim">Tgl Expired</label>
+                                    <input type="date" class="form-control" id="sim" wire:model="exp_sim" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="sim">Tgl Expired</label>
+                                    <input type="date" class="form-control" id="" wire:model="exp_stnk" />
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary float-right">
+                            Tambah
+                        </button>
+                        <button type="reset" class="btn btn-danger float-right mr-2">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
