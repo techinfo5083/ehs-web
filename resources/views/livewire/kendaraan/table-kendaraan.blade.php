@@ -21,9 +21,12 @@
                         <th class="bg-success text-light">EXP</th>
                     </tr>
                     </tr>
+                    @php
+                    $i = 1;
+                    @endphp
                     @foreach($dataKendaraan as $kendaraan)
                     <tr class="text-center">
-                        <td>1</td>
+                        <td>{{ $i++ }}</td>
                         <td>{{ $kendaraan->nama}}</td>
                         <td>{{ $kendaraan->dept}}</td>
                         <td>{{ $kendaraan->jenis}}</td>

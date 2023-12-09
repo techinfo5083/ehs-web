@@ -57,7 +57,7 @@ class FormKendaraan extends Component
             'kategori'      => 'required',
             'merk'          => 'required',
             'jenis'         => 'required',
-            'no_plat'       => 'required | unique:kendaraan | max:10',
+            'no_plat'       => 'required|max:10',
             'helm'          => 'required',
             'knalpot'       => 'required',
             'spion'         => 'required',
