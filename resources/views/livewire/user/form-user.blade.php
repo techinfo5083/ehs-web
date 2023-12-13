@@ -1,3 +1,4 @@
+@if($statusUpdate == false)
 <div class="col-lg-5 col-md-6 col-sm-6 mb-2">
     <div class="card">
         <div class="card-header">
@@ -64,3 +65,6 @@
         </div>
     </div>
 </div>
+@else
+@livewire('user.form-user')
+@endif

@@ -37,7 +37,7 @@
                         <td>{{$kendaraan->stnk}}</td>
                         <td>{{$kendaraan->exp_stnk}}</td>
                         <td>
-                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-danger btn-sm" wire:click="destroy({{ $kendaraan->id }})"><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
                     @endforeach

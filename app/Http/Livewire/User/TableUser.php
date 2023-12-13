@@ -30,24 +30,11 @@ class TableUser extends Component
 
     public function destroy($id)
     {
-        $this->alert('warning', 'Peringatan!', [
-            'position' => 'center',
-            'timer' => 3000,
-            'toast' => true,
-            'text' => 'Yakin Ingin Hapus Data Ini?',
-            'showConfirmButton' => true,
-            'onConfirmed' => User::find($id)->delete(),
-            'confirmButtonText' => 'OK',
-            'showDenyButton' => false,
-            'onDenied' => '',
-            'denyButtonText' => 'Batal',
-            'showCancelButton' => true,
-            'onDismissed' => '',
+        $this->dispatchBrowserEvent('alert', [
+            'type' => 'success',
+            'message' => 'User Berhasil dihapus'
         ]);
-
-
-        // User::find($id)->delete();
-
+        // user::find($id)->delete();
     }
 
     public function getUserId($id)

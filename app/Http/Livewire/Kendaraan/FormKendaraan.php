@@ -70,7 +70,7 @@ class FormKendaraan extends Component
         ]);
 
         // dd();
-       $kendaraan = Kendaraan::create(
+        $kendaraan = Kendaraan::create(
             [
                 'nama'      => $this->nama,
                 'dept'      => $this->dept,
@@ -91,11 +91,11 @@ class FormKendaraan extends Component
         );
 
         $this->clearInput();
-        $this->alert('success', 'Hello!', [
+        $this->alert('success', 'Data Berhasil Ditambahkan!', [
             'position' => 'center',
-            'timer' => 3000,
-            'toast' => true,
-            'text' => 'Data Berhasil Ditambahkan!',
+            // 'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => false,
         ]);
 
         $this->emit('loadDataKendaraan', $kendaraan);

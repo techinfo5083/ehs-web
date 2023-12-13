@@ -17,10 +17,10 @@ class CreateKendaraanTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('dept');
-            $table->string('ketegori');
+            $table->string('kategori');
             $table->string('merk');
             $table->string('jenis');
-            $table->string('plat _no');
+            $table->string('no_plat');
             $table->string('helm');
             $table->string('knalpot');
             $table->string('spion');
@@ -29,7 +29,7 @@ class CreateKendaraanTable extends Migration
             $table->string('exp_sim');
             $table->string('stnk');
             $table->string('exp_stnk');
-            $table->string('eticker');
+            $table->string('sticker');
             $table->timestamps();
         });
     }

@@ -186,7 +186,8 @@
 
   <!-- Bootstrap core JavaScript-->
   @livewireScripts
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
   <x-livewire-alert::scripts />
   <script src="/asset/vendor/jquery/jquery.min.js"></script>
@@ -197,6 +198,34 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/asset/js/sb-admin-2.min.js"></script>
+
+  <script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'center',
+      showConfirmButton: false,
+      showDenyButton: false,
+      showCloseButton: true,
+      timer: 5000,
+      timerProgressBar: false,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    });
+
+    window.addEventListener('alert', ({
+      detail: {
+        type,
+        message
+      }
+    }) => {
+      Toast.fire({
+        icon: type,
+        title: message
+      })
+    })
+  </script>
 
 </body>
 

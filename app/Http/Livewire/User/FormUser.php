@@ -15,6 +15,8 @@ class FormUser extends Component
     public $role;
     public $password;
 
+    public $statusUpdate = false;
+
     use LivewireAlert;
 
     public function render()
@@ -47,11 +49,10 @@ class FormUser extends Component
             ]
         );
         $this->clearInput();
-        $this->alert('success', 'Hello!', [
+        $this->alert('success', 'User Berhasil Ditambahkan!', [
             'position' => 'center',
             'timer' => 3000,
             'toast' => true,
-            'text' => 'Data Berhasil Ditambahkan!',
         ]);
         $this->emit('loadDataUsers', $user);
 

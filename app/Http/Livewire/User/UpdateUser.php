@@ -11,6 +11,7 @@ class UpdateUser extends Component
     public $role;
     public $password;
     public $userId;
+    public $statusUpdate = true;
 
     protected $listeners = [
         'getUserId'
