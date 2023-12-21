@@ -49,14 +49,6 @@ class FormUser extends Component
             ]
         );
         $this->clearInput();
-        $this->alert('success', 'User Berhasil Ditambahkan!', [
-            'position' => 'center',
-            'timer' => 3000,
-            'toast' => true,
-        ]);
         $this->emit('loadDataUsers', $user);
-
-        // session()->flash('status', 'Data User Berhasil Ditambahkan!');
-
     }
 }

@@ -13,6 +13,7 @@ class TableUser extends Component
 
     protected $listeners = [
         'loadDataUsers',
+        'loadDataUserUpdate'
     ];
 
     public function render()
@@ -26,6 +27,21 @@ class TableUser extends Component
 
     public function loadDataUsers($user)
     {
+        $this->alert('success', 'User '. $user['name'] .' Berhasil Ditambahkan!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => true,
+        ]);
+    }
+
+    public function loadDataUserUpdate($user)
+    {
+        $this->statusUpdate = false;
+        $this->alert('success', 'Data '. $user['name'] .' Berhasil diubah!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => true,
+        ]);
     }
 
     public function destroy($id)
@@ -34,13 +50,14 @@ class TableUser extends Component
             'type' => 'success',
             'message' => 'User Berhasil dihapus'
         ]);
-        // user::find($id)->delete();
+        user::find($id)->delete();
     }
 
-    public function getUserId($id)
+    public function getUser($id)
     {
         $this->statusUpdate = true;
-        $user = User::find($id);
-        $this->emit('getUserId', $user);
+        $user = user::find($id);
+        // dd($user);
+        $this->emit('getUser', $user);
     }
 }

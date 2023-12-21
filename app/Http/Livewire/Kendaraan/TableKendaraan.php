@@ -9,9 +9,11 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class TableKendaraan extends Component
 {
     use LivewireAlert;
+    public $statusUpdate = false;
 
     protected $listeners = [
-        'loadDataKendaraan'
+        'loadDataKendaraan',
+        'loadDataKendaraanUpdate'
     ];
 
     public function render()
@@ -25,6 +27,30 @@ class TableKendaraan extends Component
 
     public function loadDataKendaraan($kendaraan)
     {
+        $this->alert('success', 'Data '. $kendaraan['nama'] .' Berhasil Ditambahkan!', [
+            'position' => 'center',
+            // 'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => false,
+        ]);
+    }
+
+    public function loadDataKendaraanUpdate($kendaraan)
+    {
+        $this->statusUpdate = true;
+        $this->alert('success', 'Data '. $kendaraan['nama'] .' Berhasil Ditambahkan!', [
+            'position' => 'center',
+            // 'timer' => 3000,
+            'toast' => false,
+            'timerProgressBar' => false,
+        ]);
+    }
+
+    public function getKendaraan($id)
+    {
+        $this->statusUpdate = true;
+        $kendaraan = Kendaraan::find($id);
+        $this->emit('getKendaraan', $kendaraan);
     }
 
     public function destroy($id)
@@ -36,4 +62,6 @@ class TableKendaraan extends Component
             'message' => "Category Deleted Successfully!!"
         ]);
     }
+
+
 }

@@ -1,4 +1,9 @@
 <div class="container-fluid">
+    @if($statusUpdate)
+    @livewire('kendaraan.update-kendaraan')
+    @else
+    @livewire('kendaraan.form-kendaraan')
+    @endif
     <div class="card">
         <div class="card-header">
             <h4>Data Kendaraan</h4>
@@ -31,13 +36,35 @@
                         <td>{{ $kendaraan->dept}}</td>
                         <td>{{ $kendaraan->jenis}}</td>
                         <td>{{$kendaraan->no_plat}}</td>
-                        <td>{{$kendaraan->sim}}</td>
-                        <td>{{$kendaraan->sim}}</td>
+                        <td>
+                            @php
+                                $sim = $kendaraan->sim;
+                                if($sim == "ok")
+                                {
+                                    echo '<i class="fas fa-check"></i>';
+                                }else
+                                {
+                                    echo '<i class="fas fa-times"></i>';
+                                }
+                            @endphp
+                        </td>
                         <td>{{$kendaraan->exp_sim}}</td>
-                        <td>{{$kendaraan->stnk}}</td>
+                        <td>
+                            @php
+                                $stnk = $kendaraan->stnk;
+                                if($stnk == "ok")
+                                {
+                                    echo '<i class="fas fa-check"></i>';
+                                }else
+                                {
+                                    echo '<i class="fas fa-times"></i>';
+                                }
+                            @endphp
+                        </td>
                         <td>{{$kendaraan->exp_stnk}}</td>
                         <td>
-                            <button class="btn btn-danger btn-sm" wire:click="destroy({{ $kendaraan->id }})"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-danger btn-sm" wire:click="destroy({{ $kendaraan->id }})" onclick="return confirm('Yakin Ingin Menghapus data ini?');"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-info btn-sm" wire:click="getKendaraan({{ $kendaraan->id }})"><i class="fas fa-edit"></i></button>
                         </td>
                     </tr>
                     @endforeach
