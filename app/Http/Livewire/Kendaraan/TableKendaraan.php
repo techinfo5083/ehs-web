@@ -10,10 +10,12 @@ class TableKendaraan extends Component
 {
     use LivewireAlert;
     public $statusUpdate = false;
+    public $statusCardInfo = false;
 
     protected $listeners = [
         'loadDataKendaraan',
-        'loadDataKendaraanUpdate'
+        'loadDataKendaraanUpdate',
+        'statusCardClose'
     ];
 
     public function render()
@@ -27,7 +29,7 @@ class TableKendaraan extends Component
 
     public function loadDataKendaraan($kendaraan)
     {
-        $this->alert('success', 'Data '. $kendaraan['nama'] .' Berhasil Ditambahkan!', [
+        $this->alert('success', 'Data ' . $kendaraan['nama'] . ' Berhasil Ditambahkan!', [
             'position' => 'center',
             // 'timer' => 3000,
             'toast' => false,
@@ -37,13 +39,18 @@ class TableKendaraan extends Component
 
     public function loadDataKendaraanUpdate($kendaraan)
     {
-        $this->statusUpdate = true;
-        $this->alert('success', 'Data '. $kendaraan['nama'] .' Berhasil Ditambahkan!', [
+        $this->statusUpdate = false;
+        $this->alert('success', 'Data ' . $kendaraan['nama'] . ' Berhasil Ditambahkan!', [
             'position' => 'center',
             // 'timer' => 3000,
             'toast' => false,
             'timerProgressBar' => false,
         ]);
+    }
+
+    public function statusCardClose()
+    {
+        $this->statusCardInfo = false;
     }
 
     public function getKendaraan($id)
@@ -53,15 +60,22 @@ class TableKendaraan extends Component
         $this->emit('getKendaraan', $kendaraan);
     }
 
+    public function getDetailKendaraan($id)
+    {
+        $this->statusCardInfo = true;
+        $kendaraan = Kendaraan::find($id);
+        $this->emit('getDetailKendaraan', $kendaraan);
+    }
+
     public function destroy($id)
     {
         Kendaraan::find($id)->delete();
-        $this->dispatchBrowserEvent('alert', [
-            'type' => 'warning',
-            'showCancelButton' => true,
-            'message' => "Category Deleted Successfully!!"
-        ]);
+        $this->alert('success', 'Data Kendaraan Berhasil Dihapus!', [
+            'position' => 'center',
+            'timer' => 3000,
+            'toast' => true,
+           ]);
+
+           redirect('/dashboard/kendaraan');
     }
-
-
 }

@@ -26,6 +26,8 @@ class FormKendaraan extends Component
     public $exp_stnk;
     public $sticker;
 
+    public $statusForm = true;
+
     public function render()
     {
         return view('livewire.kendaraan.form-kendaraan');
@@ -91,13 +93,16 @@ class FormKendaraan extends Component
         );
 
         $this->clearInput();
-        $this->alert('success', 'Data Berhasil Ditambahkan!', [
-            'position' => 'center',
-            // 'timer' => 3000,
-            'toast' => false,
-            'timerProgressBar' => false,
-        ]);
-
         $this->emit('loadDataKendaraan', $kendaraan);
+    }
+
+    public function statusFormFalse()
+    {
+        $this->statusForm = false;
+    }
+
+    public function statusFormTrue()
+    {
+        $this->statusForm = true;
     }
 }

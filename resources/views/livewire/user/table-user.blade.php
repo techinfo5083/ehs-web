@@ -10,9 +10,8 @@
                         <tr class="text-center bg-warning text-light">
                             <th>#</th>
                             <th>NIK</th>
-                            <th>ROLE</th>
                             <th>USERNAME</th>
-                            <th>PASSWORD</th>
+                            <th>ROLE</th>
                             <th>AKSI</th>
                         </tr>
                         @php
@@ -22,13 +21,16 @@
                         <tr class="text-center">
                             <td>{{ $i++ }}</td>
                             <td>{{ $data->nik }}</td>
-                            <td>{{ $data->role}}</td>
                             <td>{{ $data->name }}</td>
-                            <td><button class="btn btn-info btn-sm"><i class="fas fa-eye"></i></button></td>
+                            <td>{{ $data->role }}</td>
                             <td>
-                                <button class="btn btn-danger btn-sm" id="" wire:click="destroy({{ $data->id }})">
+                                @if($data->name == Auth()->user()->name)
+                                <button class="btn btn-danger btn-sm"><i class="fas fa-lock"></i></button>
+                                @else
+                                <button type="button" class="btn btn-danger" wire:click="destroy({{ $data->id }})">
                                     <i class="fas fa-trash"></i>
                                 </button>
+                                @endif
                                 |
                                 <button class="btn btn-info btn-sm" wire:click="getUser({{ $data['id'] }})">
                                     <i class="fas fa-edit"></i>

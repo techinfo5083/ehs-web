@@ -1,9 +1,21 @@
 <div class="container mb-3">
     <div class="card">
         <div class="card-header">
-            <h5>Form Tambah Kendaraan</h5>
+            <div class="row">
+                <div class="col-lg-10">
+                    <h5>Form Tambah Kendaraan</h5>
+                </div>
+                <div class="col-lg-2">
+                    @if($statusForm)
+                    <button class="btn btn-danger float-end" wire:click="statusFormFalse()">Sembunyikan</button>
+                    @else
+                    <button class="btn btn-primary float-end" wire:click="statusFormTrue()">Tampilkan</button>
+                    @endif
+                </div>
+            </div>
         </div>
-        <div class="card body p-2">
+        @if($statusForm)
+        <div class="card-body p-2">
             <form wire:submit.prevent="store">
                 @csrf
                 <div class="row">
@@ -159,5 +171,6 @@
                 </div>
             </form>
         </div>
+        @endif
     </div>
 </div>

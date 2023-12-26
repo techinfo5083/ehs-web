@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\UserController;
@@ -30,9 +31,5 @@ Route::get('/dashboard/kendaraan', [KendaraanController::class, 'index'])->middl
 
 Route::post('/register', [UserController::class, 'store']);
 
-Route::get('/dashboard', function () {
-    $data = [
-        'tittle' => 'Dashboard'
-    ];
-    return view('admin.dashboard', $data);
-})->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');

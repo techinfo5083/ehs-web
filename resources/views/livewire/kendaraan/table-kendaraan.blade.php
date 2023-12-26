@@ -4,6 +4,11 @@
     @else
     @livewire('kendaraan.form-kendaraan')
     @endif
+
+    @if($statusCardInfo)
+    @livewire('kendaraan.show-kendaraan')
+    @endif
+
     <div class="card">
         <div class="card-header">
             <h4>Data Kendaraan</h4>
@@ -38,33 +43,34 @@
                         <td>{{$kendaraan->no_plat}}</td>
                         <td>
                             @php
-                                $sim = $kendaraan->sim;
-                                if($sim == "ok")
-                                {
-                                    echo '<i class="fas fa-check"></i>';
-                                }else
-                                {
-                                    echo '<i class="fas fa-times"></i>';
-                                }
+                            $sim = $kendaraan->sim;
+                            if($sim == "ok")
+                            {
+                            echo '<i class="fas fa-check"></i>';
+                            }else
+                            {
+                            echo '<i class="fas fa-times"></i>';
+                            }
                             @endphp
                         </td>
                         <td>{{$kendaraan->exp_sim}}</td>
                         <td>
                             @php
-                                $stnk = $kendaraan->stnk;
-                                if($stnk == "ok")
-                                {
-                                    echo '<i class="fas fa-check"></i>';
-                                }else
-                                {
-                                    echo '<i class="fas fa-times"></i>';
-                                }
+                            $stnk = $kendaraan->stnk;
+                            if($stnk == "ok")
+                            {
+                            echo '<i class="fas fa-check"></i>';
+                            }else
+                            {
+                            echo '<i class="fas fa-times"></i>';
+                            }
                             @endphp
                         </td>
                         <td>{{$kendaraan->exp_stnk}}</td>
                         <td>
-                            <button class="btn btn-danger btn-sm" wire:click="destroy({{ $kendaraan->id }})" onclick="return confirm('Yakin Ingin Menghapus data ini?');"><i class="fas fa-trash"></i></button>
+                            <button class="btn btn-danger" wire:click="destroy({{ $kendaraan->id }})">Hapus</button>
                             <button class="btn btn-info btn-sm" wire:click="getKendaraan({{ $kendaraan->id }})"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-info btn-sm" wire:click="getDetailKendaraan({{ $kendaraan->id }})"><i class="fas fa-info"></i></button>
                         </td>
                     </tr>
                     @endforeach

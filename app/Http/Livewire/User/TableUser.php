@@ -13,7 +13,7 @@ class TableUser extends Component
 
     protected $listeners = [
         'loadDataUsers',
-        'loadDataUserUpdate'
+        'loadDataUserUpdate',
     ];
 
     public function render()
@@ -34,6 +34,7 @@ class TableUser extends Component
         ]);
     }
 
+
     public function loadDataUserUpdate($user)
     {
         $this->statusUpdate = false;
@@ -46,11 +47,13 @@ class TableUser extends Component
 
     public function destroy($id)
     {
+        dd($id);
+        // user::find($id)->delete();
         $this->dispatchBrowserEvent('alert', [
             'type' => 'success',
             'message' => 'User Berhasil dihapus'
         ]);
-        user::find($id)->delete();
+        redirect('/dashboard/user');
     }
 
     public function getUser($id)
