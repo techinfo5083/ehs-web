@@ -5,26 +5,25 @@ namespace App\Http\Livewire\Dashboard;
 use Livewire\Component;
 use App\Models\Kendaraan;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ExpiredPajakMotor extends Component
 {
     public $bulan;
 
+    protected $listeners =
+    [
+        'loadBulanPajak'
+    ];
+
     public function render()
     {
+        $stnk = Kendaraan::all();
         $data = [
             'tittle' => 'Dashboard Kendaraan',
-            'dataKendaraan' => Kendaraan::all()
+            'dataStnk' => $stnk,
+
         ];
         return view('livewire.dashboard.expired-pajak-motor', $data);
-    }
-
-    public function getMonth()
-    {
-        $kendaraan = Kendaraan::select('*');
-        $kendaraan-> whereMonth('exp_sim', Carbon::now()->month())->get();
-
-        dd($kendaraan);
-        return $this->bulan = $kendaraan;
     }
 }

@@ -26,9 +26,9 @@ class CreateKendaraanTable extends Migration
             $table->string('spion');
             $table->string('plat');
             $table->string('sim');
-            $table->string('exp_sim');
+            $table->dateTime('exp_sim');
             $table->string('stnk');
-            $table->string('exp_stnk');
+            $table->dateTime('exp_stnk');
             $table->string('sticker');
             $table->timestamps();
         });

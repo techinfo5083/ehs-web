@@ -53,7 +53,7 @@
                             }
                             @endphp
                         </td>
-                        <td>{{$kendaraan->exp_sim}}</td>
+                        <td>{{date('Y-m-d', strtotime($kendaraan->exp_sim))}}</td>
                         <td>
                             @php
                             $stnk = $kendaraan->stnk;
@@ -66,9 +66,9 @@
                             }
                             @endphp
                         </td>
-                        <td>{{$kendaraan->exp_stnk}}</td>
+                        <td>{{date('Y-m-d', strtotime($kendaraan->exp_stnk))}}</td>
                         <td>
-                            <button class="btn btn-danger" wire:click="destroy({{ $kendaraan->id }})">Hapus</button>
+                            <button class="btn btn-danger btn-sm" wire:click="destroy({{ $kendaraan->id }})"><i class="fas fa-trash"></i></button>
                             <button class="btn btn-info btn-sm" wire:click="getKendaraan({{ $kendaraan->id }})"><i class="fas fa-edit"></i></button>
                             <button class="btn btn-info btn-sm" wire:click="getDetailKendaraan({{ $kendaraan->id }})"><i class="fas fa-info"></i></button>
                         </td>

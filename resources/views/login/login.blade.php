@@ -12,7 +12,7 @@
   <div class="container" style="margin-top: 150px;">
     <div class="row justify-content-center">
       <div class="col-md-7 col-lg-5 col-sm-10 col-xs">
-        <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded">        
           <h3 class="text-center">EHS MITSUYOSHI PWK</h3>
           @if(session()->has('status'))
           <div class="alert alert-danger" role="alert">
@@ -36,6 +36,11 @@
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
           </form>
+          <p class="mt-2 fst-italic">Informasi!</p>
+          <p class="fst-italic">
+            * Bila belum punya akun dan tidak bisa login <br>
+            * Segera hubungi Bpk. Arif Rahman Dept EHS
+          </p>
         </div>
       </div>
     </div>
