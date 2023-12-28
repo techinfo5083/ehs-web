@@ -28,10 +28,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-cog fa-spin"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">EHS JWS</div>
+        <div class="sidebar-brand-text ">EHS JWS</div>
       </a>
 
       <!-- Divider -->
@@ -103,6 +100,7 @@
       <div id="content">
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <img src="/asset/img/logo-ehs.png" alt="" style="width: 60px;">
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>

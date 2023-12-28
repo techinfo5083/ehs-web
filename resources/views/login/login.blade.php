@@ -9,11 +9,10 @@
 </head>
 
 <body>
-  <div class="container" style="margin-top: 150px;">
+  <div class="container" style="margin-top: 110px;">
     <div class="row justify-content-center">
       <div class="col-md-7 col-lg-5 col-sm-10 col-xs">
-        <div class="shadow p-3 mb-5 bg-body-tertiary rounded">        
-          <h3 class="text-center">EHS MITSUYOSHI PWK</h3>
+        <!-- <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
           @if(session()->has('status'))
           <div class="alert alert-danger" role="alert">
             {{ session('status') }}
@@ -41,6 +40,40 @@
             * Bila belum punya akun dan tidak bisa login <br>
             * Segera hubungi Bpk. Arif Rahman Dept EHS
           </p>
+        </div> -->
+        <div class="card">
+          <div class="card-header">
+            <img src="/asset/img/logo-ehs.png" alt="" style="width: 60px;" class="float-start">
+          </div>
+          <div class="card-body">
+            @if(session()->has('status'))
+            <div class="alert alert-danger" role="alert">
+              {{ session('status') }}
+            </div>
+            @endif
+            <form action="/login" method="post">
+              @csrf
+              <div class="mb-3">
+                <label for="nik" class="form-label">NIK</label>
+                <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" />
+                @error('nik')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" />
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p class="mt-2 fst-italic">Informasi!</p>
+            <p class="fst-italic">
+              * Bila belum punya akun dan tidak bisa login <br>
+              * Segera hubungi Bpk. Arif Rahman Dept EHS
+            </p>
+          </div>
         </div>
       </div>
     </div>

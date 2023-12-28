@@ -25,7 +25,7 @@
                         <th>TAHUN</th>
                     </tr>
                     @foreach($dataStnk as $data)
-                    @if(\Carbon\Carbon::parse($data->exp_stnk)->diffForHumans() == "1 bulan dari sekarang")
+                    @if(\Carbon\Carbon::parse($data->exp_stnk)->diffForHumans() <= "1 bulan dari sekarang")
                     <tr class="text-center">
                         <td>1</td>
                         <td>{{ $data->nama }}</td>

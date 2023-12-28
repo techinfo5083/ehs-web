@@ -1,7 +1,7 @@
 <div class="container mb-3">
     <div class="card">
         <div class="card-header">
-            <div class="row">
+            <div class="row justify-content-end">
                 <div class="col-lg-10">
                     <h5>Form Tambah Kendaraan</h5>
                 </div>

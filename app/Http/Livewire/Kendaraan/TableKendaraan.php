@@ -5,10 +5,15 @@ namespace App\Http\Livewire\Kendaraan;
 use Livewire\Component;
 use App\Models\Kendaraan;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\WithPagination;
 
 class TableKendaraan extends Component
 {
     use LivewireAlert;
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    public $paginate = 5;
+    public $search;
     public $statusUpdate = false;
     public $statusCardInfo = false;
 
@@ -20,9 +25,12 @@ class TableKendaraan extends Component
 
     public function render()
     {
+        $kendaraan = $this->search === null ?
+            Kendaraan::latest()->paginate($this->paginate) :
+            Kendaraan::all()->paginate($this->paginate);
         $data = [
             'tittle' => 'Kendaraan',
-            'dataKendaraan' => Kendaraan::all()
+            'dataKendaraan' => $kendaraan
         ];
         return view('livewire.kendaraan.table-kendaraan', $data);
     }

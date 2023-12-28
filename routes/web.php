@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckKendaraanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\loginController;
@@ -27,9 +28,6 @@ Route::post('/logout', [loginController::class, 'logout']);
 
 Route::get('/dashboard/user', [UserController::class, 'index']);
 Route::get('/dashboard/kendaraan', [KendaraanController::class, 'index'])->middleware('auth');
-
-
 Route::post('/register', [UserController::class, 'store']);
-
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/check-kendaraan', [CheckKendaraanController::class, 'index'])->middleware('auth');
