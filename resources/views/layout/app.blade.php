@@ -28,7 +28,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
-        <div class="sidebar-brand-text ">EHS JWS</div>
+        <div class="sidebar-brand-text ">EHS PT. MMI</div>
       </a>
 
       <!-- Divider -->

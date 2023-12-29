@@ -8,7 +8,9 @@
 <!-- Content Row -->
 <div class="row">
   @livewire('dashboard.expired-pajak-motor')
-  @livewire('dashboard.expired-sim-motor')
+  @livewire('dashboard.catatan-dashboard')
 </div>
+
+
 
 @endSection()

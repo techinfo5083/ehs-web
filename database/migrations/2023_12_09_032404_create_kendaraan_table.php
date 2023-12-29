@@ -30,6 +30,7 @@ class CreateKendaraanTable extends Migration
             $table->string('stnk');
             $table->dateTime('exp_stnk');
             $table->string('sticker');
+            $table->string('status');
             $table->timestamps();
         });
     }

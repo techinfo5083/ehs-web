@@ -11,10 +11,14 @@ class HitungKategori extends Component
     {
         $motor = Kendaraan::select('kategori')->where('kategori', 'Motor')->count();
         $mobil = Kendaraan::select('kategori')->where('kategori', 'Mobil')->count();
+        $stickerNG = Kendaraan::select('sticker')->where('sticker', 'NG')->count();
+        $stickerBelumTerpasang = Kendaraan::select('sticker')->where('sticker', 'Belum')->count();
         // dd($JumlahKategori);
         $data = [
             'JumlahMotor' => $motor,
-            'JumlahMobil' => $mobil
+            'JumlahMobil' => $mobil,
+            'StickerNG' => $stickerNG,
+            'StickerBelumTerpasang' => $stickerBelumTerpasang
         ];
         return view('livewire.dashboard.hitung-kategori', $data);
     }

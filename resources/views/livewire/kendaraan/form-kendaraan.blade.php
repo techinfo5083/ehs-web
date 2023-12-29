@@ -36,6 +36,7 @@
                                     <option>--Pilih--</option>
                                     <option value="Stamping">Stamping</option>
                                     <option value="Welding">Welding</option>
+                                    <option value="Machining">Machining</option>
                                     <option value="PE">PE</option>
                                     <option value="QA">QA</option>
                                     <option value="EHS">EHS</option>
@@ -161,6 +162,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Check Terdaftar -->
+                        <input type="hidden" id="" wire:model="status">
+                        <!-- End Check Terdftar -->
                         <button type="submit" class="btn btn-primary float-right">
                             Tambah
                         </button>

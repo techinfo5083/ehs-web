@@ -39,4 +39,5 @@
             </div>
         </div>
     </div>
+    @livewire('dashboard.expired-sim-motor')
 </div>

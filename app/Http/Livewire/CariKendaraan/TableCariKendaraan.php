@@ -11,7 +11,7 @@ class TableCariKendaraan extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $paginate = 5;
-    public $search;
+    public $search = "";
     public $statusUpdate;
 
     public function render()

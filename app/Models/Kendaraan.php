@@ -24,6 +24,7 @@ class Kendaraan extends Model
         'exp_sim',
         'stnk',
         'exp_stnk',
-        'sticker'
+        'sticker',
+        'status'
     ];
 }

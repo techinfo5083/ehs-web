@@ -25,6 +25,7 @@ class FormKendaraan extends Component
     public $stnk;
     public $exp_stnk;
     public $sticker;
+    public $status = "Terdaftar";
 
     public $statusForm = true;
 
@@ -89,9 +90,10 @@ class FormKendaraan extends Component
                 'stnk'      => $this->stnk,
                 'exp_stnk'  => $this->exp_stnk,
                 'sticker'   => $this->sticker,
+                'status'   => $this->status,
             ]
         );
-
+        
         $this->clearInput();
         $this->emit('loadDataKendaraan', $kendaraan);
     }

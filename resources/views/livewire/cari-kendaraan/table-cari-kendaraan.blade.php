@@ -31,13 +31,14 @@
                         <th rowspan="2">JENIS MOTOR</th>
                         <th rowspan="2">NO PLAT</th>
                         <th colspan="4">KELENGKAPAN SURAT</th>
+                        <th rowspan="2">STATUS</th>
                         <th rowspan="2">AKSI</th>
-                    <tr class="text-center">
-                        <th class="bg-primary text-light">SIM</th>
-                        <th class="bg-primary text-light">EXP</th>
-                        <th class="bg-success text-light">STNK</th>
-                        <th class="bg-success text-light">EXP</th>
-                    </tr>
+                        <tr class="text-center">
+                            <th class="bg-primary text-light">SIM</th>
+                            <th class="bg-primary text-light">EXP</th>
+                            <th class="bg-success text-light">STNK</th>
+                            <th class="bg-success text-light">EXP</th>
+                        </tr>
                     </tr>
                     @php $i = 1 + ($paginate * ($currentPage - 1)); @endphp
                     @foreach($DataKendaraan as $kendaraan)
@@ -73,10 +74,15 @@
                             @endphp
                         </td>
                         <td>{{date('d/m/Y', strtotime($kendaraan->exp_stnk))}}</td>
+                        @if($kendaraan->status == "Terdaftar")
+                        <td class="bg-success text-light font-weight-bold">Terdaftar</td>
+                        @else
+                        <td class="bg-danger text-light font-weight-bold">Tidak Terdaftar</td>
+                        @endif
                         <td>
                             <button class="btn btn-info btn-sm" wire:click="getKendaraan({{ $kendaraan->id }})"><i class="fas fa-edit"></i></button>
                         </td>
-                    </tr>
+                    </tr>                    
                     @endforeach
                 </table>
                 {{ $DataKendaraan->links('pagination::bootstrap-4') }}
