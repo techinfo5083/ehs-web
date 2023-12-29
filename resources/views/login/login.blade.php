@@ -26,10 +26,10 @@
   <div class="container" style="margin-top: 100px;">
     <div class="row justify-content-center">
       <div class="col-md-7 col-lg-5 col-sm-10 col-xs">
-      <h4 class="text-center">Form Login EHS MMI</h4>
         <div class="card">
           <div class="card-header">
             <img src="/asset/img/logo-ehs.png" alt="" style="width: 60px;" class="float-start">
+            <!-- <h4 class="text-center">Form Login EHS MMI</h4> -->
           </div>
           <div class="card-body">
             @if(session()->has('status'))
